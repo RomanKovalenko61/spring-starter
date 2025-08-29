@@ -1,6 +1,7 @@
 package com.dmdev.spring;
 
 import com.dmdev.spring.database.pool.ConnectionPool;
+import com.dmdev.spring.database.repository.CompanyRepository;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class ApplicationRunner {
@@ -11,6 +12,8 @@ public class ApplicationRunner {
 //        System.out.println(context.getBean(ConnectionPool.class)); // error if 2 objects
         var connectionPool = context.getBean("p1", ConnectionPool.class);
         System.out.println(connectionPool);
+        var companyRepository = context.getBean("companyRepository", CompanyRepository.class);
+        System.out.println(companyRepository);
 
         context.close();
     }
