@@ -7,14 +7,14 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class ApplicationRunner {
 
     public static void main(String[] args) {
-        var context = new ClassPathXmlApplicationContext("application.xml");
+        try (var context = new ClassPathXmlApplicationContext("application.xml")) {
 //         clazz -> String -> Map<String, Object>
 //        System.out.println(context.getBean(ConnectionPool.class)); // error if 2 objects
-        var connectionPool = context.getBean("p1", ConnectionPool.class);
-        System.out.println(connectionPool);
-        var companyRepository = context.getBean("companyRepository", CompanyRepository.class);
-        System.out.println(companyRepository);
+            var connectionPool = context.getBean("p1", ConnectionPool.class);
+            System.out.println(connectionPool);
 
-        context.close();
+            var companyRepository = context.getBean("companyRepository", CompanyRepository.class);
+            System.out.println(companyRepository);
+        }
     }
 }
