@@ -16,9 +16,7 @@ public class ApplicationRunner {
         System.out.println(Serializable.class.isAssignableFrom(value.getClass()));
 
         try (var context = new ClassPathXmlApplicationContext("application.xml")) {
-//         clazz -> String -> Map<String, Object>
-//        System.out.println(context.getBean(ConnectionPool.class)); // error if 2 objects
-            var connectionPool = context.getBean("p1", ConnectionPool.class);
+            var connectionPool = context.getBean("pool1", ConnectionPool.class);
             System.out.println(connectionPool);
 
             var companyRepository = context.getBean("companyRepository", CrudRepository.class);
