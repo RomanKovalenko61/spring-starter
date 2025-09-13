@@ -36,6 +36,7 @@ public class ApplicationConfiguration {
     }
 
     @Bean
+    @Profile("prod|web") // ! not  & and  | or
     // @Qualifier("pool2") or parameter name pool2
     public UserRepository userRepository2(@Qualifier("pool2") ConnectionPool pool2) {
         return new UserRepository(pool2);
